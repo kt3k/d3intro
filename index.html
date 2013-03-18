@@ -110,7 +110,8 @@ span.hl {
 </section>
 
 <section>
-    <h2>steamgraph</h2>
+    <h2>streamgraph</h2>
+    <iframe src="examples/streamgraph.html" style="width: 100%; zoom: 1 !important; width: 800px; height: 500px;"></iframe>
 </section>
 
 <section>
@@ -138,12 +139,14 @@ d3.select('body').selectAll('div')
     <section data-state="">
     <h2>Data-Driven Update</h2>
     <p>data を使って selection を update する</p>
-    <pre><code class="javascript">
-var data = [4, 3, 5, 6, 10, 14];
+    <pre><code class="coffeescript">
+data = [4, 3, 5, 6, 10, 14]
 
 d3.select('body').selectAll('div')
     .data(data)
-    <span class="hl fragment">.attr('width', function (d) {return d;});</span>
+    <span class="hl fragment">.style('height', 20)</span>
+    <span class="hl fragment">.style('width', (d) -> d)</span>
+    <span class="hl fragment">.attr('class', 'bar')</span>
 </code></pre>
     </section>
 
@@ -151,6 +154,29 @@ d3.select('body').selectAll('div')
     <h2>Enter と Exit</h2>
     </section>
 
+</section>
+
+<section>
+    <h2>特徴</h2>
+    <ul>
+        <li>宣言的に書ける</li>
+        <ul>
+            <li>not 手続き的</li>
+            <li>if とか for とかが無い。</li>
+        </ul>
+    </ul>
+
+</section>
+
+<section>
+    <h2>Overview</h2>
+    <p><small>(私見)</small></p>
+    <ul>
+        <li>Core</li>
+        <li>Layout</li>
+        <li>Geo</li>
+        <li>Util</li>
+    </ul>
 </section>
 
 <section data-state="">
@@ -176,7 +202,7 @@ d3.select('body').selectAll('div')
 hljs.initHighlightingOnLoad()
 
 Reveal.initialize
-  transition: 'cube'
+  transition: 'concave'
   history: true
 </script>
 </body>
