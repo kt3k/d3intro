@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<meta charset="utf-8" />
+<title>d3 intro</title>
+<link rel="stylesheet" href="css/reveal.min.css" />
+<link rel="stylesheet" href="css/theme/serif.css" />
+<link rel="stylesheet" href="css/zenburn.css" />
+<style>
+.reveal .state-background {
+    background-color: #f0f1eb;
+}
+
+.tp .reveal .state-background {
+    background-color: transparent;
+}
+.img1 .reveal {
+    background-image: url(http://tiqav.com/Uc.jpg);
+}
+
+.reveal {
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.reveal code {
+    font-family: menlo, monaco;
+    padding: 15px !important;
+}
+
+.reveal pre {
+    font-size: .8em;
+}
+
+span.hl {
+    background-color: hsla(120,100%,50%,0.3);
+    border-radius: 12px;
+}
+
+</style>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- スライドここから -->
+
+<section data-state="">
+<h1>入門 D3.js</h1>
+<h3>Data Driven Document</h3>
+<p>
+    <small>
+        by <a href="https://github.com/kt3k/">Yosiya Hinosawa</a>
+        <br />
+        スライドはこちら→ <a href="http://kt3k.github.com/d3intro/">http://kt3k.github.com/d3intro/</a>
+        <!--<br />
+        this slide powered by <a href="http://lab.hakim.se/reveal-js/">reveal.js</a>-->
+    </small>
+</p>
+</section>
+
+<section data-state="alert">
+
+    <section data-state="">
+    <h1>D3.js?</h1>
+    <p>
+        <br /><small>press [↓]</small>
+    </p>
+    </section>
+
+    <section data-state="">
+    <h2>D3.js とは・・・</h2>
+    <ul>
+      <li class="fragment">javascript のライブラリ</li>
+      <li class="fragment">Data Visualization 用途に特化</li>
+      <li class="fragment">主にブラウザ向け</li>
+    </ul>
+    </section>
+
+    <section data-state="">
+    <h2>D3.js とは・・・</h2>
+    <ul>
+      <li class="fragment">GitHub で公開</li>
+      <li class="fragment">スターの数 8位 @ GitHub</li>
+      <li class="fragment">BSD License</li>
+    </ul>
+    </section>
+
+</section>
+
+<section>
+
+    <section data-state="">
+    <h1>由来</h1>
+    </section>
+
+    <section data-state="">
+    <h2>作者</h2>
+    <h3>Mike Bostock</h3>
+    <ul>
+        <li>Protovis という別な Data Viz Lib 作ってた。</li>
+        <img src="" />
+        <li></li>
+    </ul>
+    </section>
+
+
+</section>
+
+<section data-state="">
+    <h1>例</h1>
+</section>
+
+<section>
+    <section data-state="">
+    <h1>基本</h1>
+    </section>
+
+    <section data-state="">
+    <h2>Selection</h2>
+    <p>css 互換セレクターで要素を選択</p>
+    <pre><code class="javascript">d3.select('body').selectAll('div');</code></pre>
+    </section>
+
+    <section data-state="">
+    <h2>Data Binding</h2>
+    <p>Selection に対して data を bind する。</p>
+    <pre style=""><code class="javascript" style="font-size: ;">
+var data = [4, 3, 5, 6, 10, 14];
+
+d3.select('body').selectAll('div')
+    <span class="hl">.data(data);</span> // selection に data を bind
+</code></pre>
+    </section>
+
+    <section data-state="">
+    <h2>Data-Driven Update</h2>
+    <p>data を使って selection を update する</p>
+    <pre><code class="javascript">
+var data = [4, 3, 5, 6, 10, 14];
+
+d3.select('body').selectAll('div')
+    .data(data)
+    <span class="hl fragment">.attr('width', function (d) {return d;});</span>
+</code></pre>
+    </section>
+
+    <section data-state="">
+    <h2>Enter と Exit</h2>
+    </section>
+
+</section>
+
+<section data-state="">
+<h1>Plugins</h1>
+</section>
+
+<section data-state="">
+<h1></h1>
+</section>
+
+<section data-state="">
+
+</section>
+
+<!-- スライドここまで -->
+
+</div>
+</div>
+<script type="text/javascript" src="js/coffee-script.js"></script>
+<script type="text/javascript" src="js/highlight.js"></script>
+<script type="text/javascript" src="js/reveal.min.js"></script>
+<script type="text/coffeescript">
+hljs.initHighlightingOnLoad()
+
+Reveal.initialize
+  transition: 'cube'
+  history: true
+</script>
+</body>
+</html>
