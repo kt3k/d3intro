@@ -10,16 +10,41 @@
     background-color: #f0f1eb;
 }
 
-.tp .reveal .state-background {
-    background-color: transparent;
+.trans100 .reveal .state-background {
+    background-color: hsla(0,0%,100%,0.0);
 }
-.img1 .reveal {
-    background-image: url(http://tiqav.com/Uc.jpg);
+
+.trans75 .reveal .state-background {
+    background-color: hsla(0,0%,100%,0.25);
+}
+
+.trans50 .reveal .state-background {
+    background-color: hsla(0,0%,100%,0.5);
+}
+
+.trans25 .reveal .state-background {
+    background-color: hsla(0,0%,100%,0.75);
+}
+
+/**
+ * background-images
+ */
+.d3ss .reveal {
+    background-image: url(img/d3ss.png);
+}
+
+.mike .reveal {
+    background-image: url(img/bostock.jpeg);
+}
+
+.theend .reveal {
+    background-image: url(img/theend.jpg);
 }
 
 .reveal {
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .reveal code {
@@ -31,8 +56,17 @@
     font-size: .8em;
 }
 
+.reveal .progress span {
+    background-color: limegreen;
+}
+
 span.hl {
     background-color: hsla(120,100%,50%,0.3);
+    border-radius: 12px;
+}
+
+span.red {
+    background-color: hsla(330,100%,50%,0.3);
     border-radius: 12px;
 }
 
@@ -43,69 +77,40 @@ span.hl {
 
 <!-- スライドここから -->
 
-<section data-state="">
+<section data-state="d3ss">
 <h1>入門 D3.js</h1>
-<h3>Data Driven Document</h3>
+<!--h3>Data Driven Documents</h3-->
 <p>
     <small>
         by <a href="https://github.com/kt3k/">Yosiya Hinosawa</a>
         <br />
-        スライドはこちら→ <a href="http://kt3k.github.com/d3intro/">http://kt3k.github.com/d3intro/</a>
-        <!--<br />
-        this slide powered by <a href="http://lab.hakim.se/reveal-js/">reveal.js</a>-->
+        スライドの URL: <a href="http://kt3k.github.com/d3intro/">http://kt3k.github.com/d3intro/</a>
     </small>
 </p>
 </section>
 
-<section data-state="alert">
-
-    <section data-state="">
+<section data-state="d3ss trans50">
     <h1>D3.js?</h1>
-    <p>
-        <br /><small>press [↓]</small>
-    </p>
-    </section>
-
-    <section data-state="">
-    <h2>D3.js とは・・・</h2>
-    <ul>
-      <li class="fragment">javascript のライブラリ</li>
-      <li class="fragment">Data Visualization 用途に特化</li>
-      <li class="fragment">主にブラウザ向け</li>
-    </ul>
-    </section>
-
-    <section data-state="">
-    <h2>D3.js とは・・・</h2>
-    <ul>
-      <li class="fragment">GitHub で公開</li>
-      <li class="fragment">スターの数 8位 @ GitHub</li>
-      <li class="fragment">BSD License</li>
-    </ul>
-    </section>
-
 </section>
 
-<section>
-
-    <section data-state="">
-    <h1>由来</h1>
-    </section>
-
-    <section data-state="">
-    <h2>作者</h2>
-    <h3>Mike Bostock</h3>
-    <ul>
-        <li>Protovis という別な Data Viz Lib 作ってた。</li>
-        <img src="" />
-        <li></li>
-    </ul>
-    </section>
-
-
+<section data-state="d3ss trans25">
+<h2>D3.js とは・・・</h2>
+<ul>
+    <li class="fragment">javascript のライブラリ</li>
+    <li class="fragment">Data Visualization 用途に特化</li>
+    <li class="fragment">主にブラウザ向け</li>
+</ul>
 </section>
 
-<section data-state="">
+<section data-state="d3ss trans25">
+<h2>D3.js とは・・・</h2>
+<ul>
+    <li class="fragment">GitHub で公開</li>
+    <li class="fragment"><a href="https://github.com/popular/starred">スターの数 7位 (13,490+個) @ GitHub</a></li>
+    <li class="fragment">BSD License</li>
+</ul>
+</section>
+<section data-state="d3ss">
     <h1>例</h1>
 </section>
 
@@ -114,18 +119,45 @@ span.hl {
     <iframe src="examples/streamgraph.html" style="width: 100%; zoom: 1 !important; width: 800px; height: 500px;"></iframe>
 </section>
 
-<section>
-    <section data-state="">
+<section data-state="mike">
+<h1>背景</h1>
+</section>
+
+<section data-state="mike trans50">
+<h2>作者</h2>
+<h3>Mike Bostock</h3>
+<ul>
+    <li class="fragment">もともと Protovis という別な Data Viz Lib 作ってた。(js)</li>
+    <li class="fragment">2010年から d3.js を作ってる。</li>
+    <li class="fragment">今はNY Times がスポンサーになっている。</li>
+</ul>
+</section>
+
+<section data-state="mike">
+    <h2>特徴</h2>
+    <p><small>(ライブラリとしての)</small></p>
+    <ul>
+        <li><span class="hl">宣言的</span>に書ける</li>
+        <ul>
+            <li class="fragment">= not <span class="red">手続き的</span></li>
+            <li class="fragment">= if とか for とかが(ほぼ)無い。</li>
+            <li class="fragment">= コード量が増えてもコードの複雑さがあがりにくい。</li>
+        </ul>
+    </ul>
+</section>
+
+<section data-state="">
     <h1>基本</h1>
-    </section>
+    <p><small>(雰囲気のみ)</small></p>
+</section>
 
-    <section data-state="">
+<section data-state="">
     <h2>Selection</h2>
-    <p>css 互換セレクターで要素を選択</p>
+    <p>css 互換セレクターで DOM を選択 (Selection オブジェクト)</p>
     <pre><code class="javascript">d3.select('body').selectAll('div');</code></pre>
-    </section>
+</section>
 
-    <section data-state="">
+<section data-state="">
     <h2>Data Binding</h2>
     <p>Selection に対して data を bind する。</p>
     <pre style=""><code class="javascript" style="font-size: ;">
@@ -134,69 +166,80 @@ var data = [4, 3, 5, 6, 10, 14];
 d3.select('body').selectAll('div')
     <span class="hl">.data(data);</span> // selection に data を bind
 </code></pre>
-    </section>
+</section>
 
-    <section data-state="">
+<section data-state="">
     <h2>Data-Driven Update</h2>
-    <p>data を使って selection を update する</p>
+    <p>data を使って Selection (DOM) を update する</p>
     <pre><code class="coffeescript">
 data = [4, 3, 5, 6, 10, 14]
 
 d3.select('body').selectAll('div')
     .data(data)
     <span class="hl fragment">.style('height', 20)</span>
-    <span class="hl fragment">.style('width', (d) -> d)</span>
+    <span class="hl fragment">.style('width', (d) -> d * 10)</span>
     <span class="hl fragment">.attr('class', 'bar')</span>
 </code></pre>
-    </section>
-
-    <section>
-        <h2>デモ</h2>
-    </section>
-
-    <section data-state="">
-        <h2>Enter と Exit</h2>
-        <p class="fragment">section の dom と data の数が合わない場合どうなる？</p>
-        <p class="fragment">data が余ってる分 = Enter</p>
-        <p class="fragment">dom が余ってる分 = Exit</p>
-    <p></p>
-    </section>
-
+    <p class="fragment"><span class="hl">.style</span> メソッドは <span class="hl">css 属性</span><br /><span class="hl">.attr</span> メソッドは<span class="hl">タグの属性</span>を更新する。</p>
+    <p class="fragment">1引数目は属性名。2引数目はその値。</p>
+    <p class="fragment">値に<span class="hl">関数</span>を入れた場合は、<span class="red">bind されたデータを引数</span>としてその関数が呼ばれ、その<span class="red">返り値</span>がセットされる。</p>
 </section>
 
 <section>
-    <h2>特徴</h2>
-    <ul>
-        <li>宣言的に書ける</li>
-        <ul>
-            <li>not 手続き的</li>
-            <li>if とか for とかが無い。</li>
-        </ul>
-    </ul>
+    <h2>デモ</h2>
+</section>
 
+<section data-state="">
+    <h2>Enter と Exit</h2>
+    <p class="fragment" style="white-space: nowrap;">Selection の <span class="hl">dom の数</span>と <span class="hl">data の数</span>が合わない場合どうなる？</p>
+    <p class="fragment">data が余ってる分 = <span class="hl">enter</span></p>
+    <p class="fragment">dom が余ってる分 = <span class="hl">exit</span></p>
+<p></p>
 </section>
 
 <section>
-    <h2>Overview</h2>
+    <h2>Transitions</h2>
+</section>
+
+<section>
+    <h2>Library Overview</h2>
     <p><small>(私見)</small></p>
     <ul>
-        <li>Core</li>
-        <li>Layout</li>
-        <li>Geo</li>
-        <li>Util</li>
+        <li>Core <span class="fragment">　　　← Selection, Transition など</span></li>
+        <li>Layout <span class="fragment">　　　← 各種レイアウト (大技系)</span></li>
+        <li>Geo <span class="fragment">　　　← 地図関連</span></li>
+        <li>Utils <span class="fragment">　　　← その他便利なの</span></li>
     </ul>
 </section>
 
 <section data-state="">
-<h1>Plugins</h1>
+    <h1>Geo</h1>
+    <p>地図データを表示出来る。</p>
+    <p>TopoJSON という独自形式を使う。</p>
 </section>
 
 <section data-state="">
-<h1></h1>
+    <h1>Geo</h1>
+    <p><small>(私見)</small></p>
+    <p class="fragment">地図データ自体が結構ややこしい。</p>
+    <p class="fragment">地雷感</p>
 </section>
 
 <section data-state="">
+    <h1>Layouts</h1>
+</section>
 
+<section data-state="theend">
+    <h1></h1>
+</section>
+
+<section data-state="theend trans100">
+    <section></section>
+
+    <section data-state="trans50">
+        <p>Slides available at:</p>
+        <p>http://kt3k.github.com/d3intro/</p>
+    </section>
 </section>
 
 <!-- スライドここまで -->
