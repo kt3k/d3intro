@@ -1,0 +1,82 @@
+<script src="js/d3.v3.min.js"></script>
+<script>
+var MAX = 108;
+
+var createRandomCircleData = function (i) {
+    return {
+        i: i,
+        cx: Math.random() * 500,
+        cy: Math.random() * 300,
+        r: Math.random() * 20
+    };
+}
+
+var createData = function (percent) {
+    var data = [];
+    for (var i = 0; i < MAX; i ++) {
+        if (Math.random() * 100 > percent) {
+            continue;
+        }
+        data.push(createRandomCircleData(i));
+    }
+    return data;
+};
+
+var circle;
+
+var init = function () {
+    var data = createData();
+    var circle = d3.select('body').append('svg').selectAll('circle').data(data);
+    circle.enter().append('circle');
+
+    circle
+        .on('click', function (d) {console.log(this); console.log(d);})
+        .attr('cx', function (d) { return d.cx + 100; })
+        .attr('cy', function (d) { return d.cy + 100; })
+        .attr('r', function(d) { return 10 + 4; })
+
+    initUI();
+}
+
+var DURATION_1 = 300;
+var DURATION_2 = 800;
+
+var updateData = function (percent) {
+    var data = createData(percent);
+    var circle = d3.select('svg').selectAll('circle').data(data, function(d) { return d.i });
+    var hue = Math.floor(Math.random() * 360);
+    circle
+        .transition()
+        .duration(DURATION_1)
+        .style('fill', 'hsl(' + hue + ',80%,80%)')
+        .style('stroke', 'hsl(' + hue + ',60%,20%)')
+        .transition()
+        .duration(DURATION_2)
+        .attr('cx', function (d) { return d.cx + 100; })
+        .attr('cy', function (d) { return d.cy + 100; })
+        .attr('r', function (d) { return d.r + 4; })
+    ;
+    circle.exit()
+        .transition()
+        .duration(DURATION_1 + DURATION_2)
+        .style('fill', 'hsl(' + hue + ',0%,80%)')
+        .style('stroke', 'hsl(' + hue + ',0%,20%)')
+        .transition()
+        .duration(DURATION_2)
+        .attr('cy', 0)
+    window.circle = circle;
+};
+
+var initUI = function () {
+    var data = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
+    d3.select('#nav').selectAll('a').data(data)
+        .enter().append('a')
+            .attr('href', 'javascript:void(0)')
+            .on('click', function (d) { updateData(d); })
+            .text(function (d) { return d + '%'; })
+            .style('margin-left', '8px')
+};
+</script>
+<body onload="init(); ">
+  <div id="nav">update</div>
+</body>

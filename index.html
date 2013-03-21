@@ -41,6 +41,14 @@
     background-image: url(img/theend.jpg);
 }
 
+.used3 .reveal {
+    background-image: url(img/used3.png);
+}
+
+.d3cloud .reveal {
+    background-image: url(img/d3cloud.png);
+}
+
 .reveal {
     background-position: center center;
     background-repeat: no-repeat;
@@ -70,6 +78,18 @@ span.red {
     border-radius: 12px;
 }
 
+span.code {
+    font-family: menlo, monaco, monospace;
+}
+
+.preload {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+}
+
 </style>
 <body>
 <div class="reveal">
@@ -78,7 +98,7 @@ span.red {
 <!-- スライドここから -->
 
 <section data-state="d3ss">
-<h1>入門 D3.js</h1>
+<h1>about D3.js</h1>
 <!--h3>Data Driven Documents</h3-->
 <p>
     <small>
@@ -96,14 +116,14 @@ span.red {
 <section data-state="d3ss trans25">
 <h2>D3.js とは・・・</h2>
 <ul>
-    <li class="fragment">javascript のライブラリ</li>
-    <li class="fragment">Data Visualization 用途に特化</li>
-    <li class="fragment">主にブラウザ向け</li>
+    <li class="fragment">ブラウザ向け javascript のライブラリ</li>
+    <li class="fragment">Data Visualization 用途 (グラフ、チャート etc...)</li>
+    <li class="fragment">minify して 140+KB</li>
 </ul>
 </section>
 
 <section data-state="d3ss trans25">
-<h2>D3.js とは・・・</h2>
+<h2>D3.js</h2>
 <ul>
     <li class="fragment">GitHub で公開</li>
     <li class="fragment"><a href="https://github.com/popular/starred">スターの数 7位 (13,490+個) @ GitHub</a></li>
@@ -111,12 +131,49 @@ span.red {
 </ul>
 </section>
 <section data-state="d3ss">
-    <h1>例</h1>
+    <h1>examples</h1>
+</section>
+
+<section data-state="d3cloud">
+    <h3><a href="http://bl.ocks.org/mbostock/4060954">streamgraph</a></h3>
+    <iframe src="examples/streamgraph.html" style="width: 100%; zoom: 1 !important; width: 800px; height: 500px;"></iframe>
+</section>
+
+<section data-state="d3cloud">
+    <section data-state="trans100">
+    </section>
+
+    <section data-state="trans50">
+        <h2><a href="http://www.jasondavies.com/wordcloud/#http%3A%2F%2Fsearch.twitter.com%2Fsearch.json%3Frpp%3D100%26q%3D%7Bword%7D=cloud">word cloud</a></h2>
+    </section>
+</section>
+
+<section data-state="d3cloud">
+    <h3><a href="http://bl.ocks.org/mbostock/4062045">Forced Directed Graph</a></h3>
+    <p><iframe src="examples/forcedgraph.html" style="width: 100%; zoom: 1 !important; width: 800px; height: 500px;"></iframe></p>
+</section>
+
+
+<section data-state="d3cloud">
+    <h3><a href="http://bl.ocks.org/mbostock/4060606">統計地図</a></h3>
+    <p><iframe src="examples/choropleth.html" style="width: 100%; zoom: 1 !important; width: 800px; height: 500px;"></iframe></p>
 </section>
 
 <section>
-    <h2>streamgraph</h2>
-    <iframe src="examples/streamgraph.html" style="width: 100%; zoom: 1 !important; width: 800px; height: 500px;"></iframe>
+    <h2>production な例</h2>
+</section>
+
+<section>
+    <h2>github.com</h2>
+    <p><img src="img/githubss.png" /></p>
+    <p><small><a href="http://bl.ocks.org/mbostock/4063318">calendar view</a></small></p>
+
+</section>
+
+<section>
+    <h2>NYTimes.com</h2>
+    <p><img src="img/nytimes.png" /></p>
+    <p><small><a href="http://www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html?_r=0">The Facebook Offering: How It Compares - NYTimes.com</a></small></p>
 </section>
 
 <section data-state="mike">
@@ -127,9 +184,9 @@ span.red {
 <h2>作者</h2>
 <h3>Mike Bostock</h3>
 <ul>
-    <li class="fragment">もともと Protovis という別な Data Viz Lib 作ってた。(js)</li>
+    <li class="fragment">もともと <a href="リンク貼る">Protovis</a> という別な Data Viz Lib 作ってた。(js)</li>
     <li class="fragment">2010年から d3.js を作ってる。</li>
-    <li class="fragment">今はNY Times がスポンサーになっている。</li>
+    <li class="fragment">今はNY Times がスポンサーになっている。($$$)</li>
 </ul>
 </section>
 
@@ -137,10 +194,12 @@ span.red {
     <h2>特徴</h2>
     <p><small>(ライブラリとしての)</small></p>
     <ul>
-        <li><span class="hl">宣言的</span>に書ける</li>
+        <li class="fragment">all in namespace <span class="code hl">d3</span></li>
+        <li class="fragment">学習曲線は<span class="red">急坂型</span></li>
+        <li class="fragment"><span class="hl">宣言的</span>に書ける</li>
         <ul>
             <li class="fragment">= not <span class="red">手続き的</span></li>
-            <li class="fragment">= if とか for とかが(ほぼ)無い。</li>
+            <li class="fragment">= if とか for が(ほぼ)無い。</li>
             <li class="fragment">= コード量が増えてもコードの複雑さがあがりにくい。</li>
         </ul>
     </ul>
@@ -153,8 +212,9 @@ span.red {
 
 <section data-state="">
     <h2>Selection</h2>
-    <p>css 互換セレクターで DOM を選択 (Selection オブジェクト)</p>
+    <p style="white-space: nowrap;">css 互換セレクターで DOM を選択</p>
     <pre><code class="javascript">d3.select('body').selectAll('div');</code></pre>
+    <p class="fragment">上の式の返り値が Selection オブジェクト</p>
 </section>
 
 <section data-state="">
@@ -181,24 +241,44 @@ d3.select('body').selectAll('div')
     <span class="hl fragment">.attr('class', 'bar')</span>
 </code></pre>
     <p class="fragment"><span class="hl">.style</span> メソッドは <span class="hl">css 属性</span><br /><span class="hl">.attr</span> メソッドは<span class="hl">タグの属性</span>を更新する。</p>
-    <p class="fragment">1引数目は属性名。2引数目はその値。</p>
-    <p class="fragment">値に<span class="hl">関数</span>を入れた場合は、<span class="red">bind されたデータを引数</span>としてその関数が呼ばれ、その<span class="red">返り値</span>がセットされる。</p>
+    <p class="fragment">属性の値に<span class="hl">関数</span>を入れた場合は、<span class="red">bind されたデータを引数</span>としてその関数が呼ばれ、その<span class="red">返り値</span>がセットされる。</p>
 </section>
 
-<section>
-    <h2>デモ</h2>
-</section>
+<!--section>
+    <h2>update のデモ</h2>
+</section-->
 
 <section data-state="">
     <h2>Enter と Exit</h2>
+    <p class=""><img src="img/join.png" width="500"/></p>
     <p class="fragment" style="white-space: nowrap;">Selection の <span class="hl">dom の数</span>と <span class="hl">data の数</span>が合わない場合どうなる？</p>
     <p class="fragment">data が余ってる分 = <span class="hl">enter</span></p>
     <p class="fragment">dom が余ってる分 = <span class="hl">exit</span></p>
-<p></p>
+</section>
+
+<section>
+    <h2>Enter と Exit</h2>
+    <pre><code class="coffeescript">d3.select('body').selectAll('div').data([1..100])
+    .enter().append('div')
+    # data にあう分の div が生成される。
+
+d3.select('body').selectAll('div').data([1..10])
+    .exit().remove()
+    # data にあわない分は .remove する。
+</code></pre>
+    <p class="fragment">dom と data の差分への操作がメソッドチェインだけで書ける。</p>
+    <p class="fragment">存在しない DOM をわざと <span class="hl code">.selectAll</span> して、<span class="hl code">.enter()</span> に <span class="hl code">.append('elm')</span> で、<span class="hl">0 から dom を生成する</span>使い方もある。</p>
 </section>
 
 <section>
     <h2>Transitions</h2>
+    <p>アニメーションの記述</p>
+    <p class="fragment"><span class="code">.transition()</span>にチェインさせた内容がアニメーションする。</p>
+</section>
+
+<section>
+    (ほぼ)ここまでの知識だけで作ってみたデモ
+    <p><iframe src="examples/1.html" style="width: 100%; zoom: 1 !important; width: 800px; height: 500px;"></iframe></p>
 </section>
 
 <section>
@@ -212,25 +292,108 @@ d3.select('body').selectAll('div')
     </ul>
 </section>
 
-<section data-state="">
-    <h1>Geo</h1>
-    <p>地図データを表示出来る。</p>
-    <p>TopoJSON という独自形式を使う。</p>
+<section>
+    <h1>Layouts</h1>
+    <p>&nbsp;<br /><small><code>d3.layout</code></small></p>
+    <ul>
+        <li class="fragment">core だけだと実現の難しいレイアウトをつくれるモジュール</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Cluster layout</h2>
+</section>
+
+<section>
+    <h2>Pack layout</h2>
+</section>
+
+<section>
+    <h2>Partition layout</h2>
+</section>
+
+<section>
+    <h2>Treemap layout</h2>
+</section>
+
+<section>
+    <h2>Bundle layout</h2>
+</section>
+
+<section>
+    <h2>Chord layout</h2>
+</section>
+
+<section>
+    <h2>Force layout</h2>
+</section>
+
+<section>
+    <h2>Stack layout</h2>
 </section>
 
 <section data-state="">
+    <h1>Geo</h1>
+    <p><small><code>d3.geo</code></small></p>
+    <p class="fragment">地図データを表示出来る。</p>
+    <p class="fragment">TopoJSON という独自形式を使う。</p>
+</section>
+
+<section data-state="used3">
     <h1>Geo</h1>
     <p><small>(私見)</small></p>
     <p class="fragment">地図データ自体が結構ややこしい。</p>
     <p class="fragment">地雷感</p>
 </section>
 
-<section data-state="">
-    <h1>Layouts</h1>
+<section data-state="used3">
+    <h2>まとめ</h2>
+</section>
+
+<section data-state="used3 trans100">
+    <section></section>
+    <section data-state="trans50">
+        <p>
+            <a href="http://www.dashingd3js.com/" target="_blank">http://www.dashingd3js.com/</a>
+        </p>
+    </section>
+</section>
+
+<section data-state="used3">
+    <h1>Resources</h1>
+    <ul>
+        <li>
+            <a href="http://d3js.org/">d3js.org</a>
+            <br />本家サイト<br />&nbsp;
+        </li>
+        <li>
+            <a href="http://bl.ocks.org/mbostock">bl.ocks.org</a>
+            <br />作者のサンプル集 (数が多い)<br />&nbsp;
+        </li>
+        <li>
+            <a href="https://github.com/mbostock/d3/wiki/Tutorials">Tutorials</a>
+            <br />本家チュートリアル集 (3rd party のもあり)<br />&nbsp;
+        </li>
+        <li>
+            <a href="https://github.com/mbostock/d3/wiki/API-Reference">API Reference</a>
+            <br />本家 API リファレンス<br />&nbsp;
+        </li>
+    </ul>
 </section>
 
 <section data-state="theend">
-    <h1></h1>
+    <h2>O'Reilly</h2>
+    <ul>
+        <p>
+            <a href="http://www.oreilly.co.jp/books/9784873115979/" target="_blank">
+                <img src="img/d3book1.jpg" height="500" />
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="http://shop.oreilly.com/product/0636920026938.do" target="_blank">
+                <img src="img/d3book2.jpg" height="500" />
+            </a>
+        </p>
+    </ul>
 </section>
 
 <section data-state="theend trans100">
@@ -256,5 +419,8 @@ Reveal.initialize
   transition: 'concave'
   history: true
 </script>
+<img class="preload" src="img/d3ss.png"/>
+<img class="preload" src="img/bostock.jpeg"/>
+<img class="preload" src="img/theend.jpg"/>
 </body>
 </html>
