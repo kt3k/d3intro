@@ -41,12 +41,20 @@
     background-image: url(img/theend.jpg);
 }
 
-.used3 .reveal {
-    background-image: url(img/used3.png);
+.bigwave .reveal {
+    background-image: url(img/bigwave.jpg);
 }
 
 .d3cloud .reveal {
     background-image: url(img/d3cloud.png);
+}
+
+.cluster .reveal {
+    background-image: url(img/cluster.png);
+}
+
+.chord .reveal {
+    background-image: url(img/chord.png);
 }
 
 .reveal {
@@ -126,10 +134,15 @@ span.code {
 <h2>D3.js</h2>
 <ul>
     <li class="fragment">GitHub で公開</li>
-    <li class="fragment"><a href="https://github.com/popular/starred">スターの数 7位 (13,490+個) @ GitHub</a></li>
+    <li class="fragment"><a href="https://github.com/popular/starred">スターの数 7位！(13,490+個) @ GitHub</a></li>
     <li class="fragment">BSD License</li>
 </ul>
 </section>
+
+<section data-state="d3ss">
+    <h2>どういうことができるの？</h2>
+</section>
+
 <section data-state="d3ss">
     <h1>examples</h1>
 </section>
@@ -206,25 +219,25 @@ span.code {
 </section>
 
 <section data-state="">
-    <h1>基本</h1>
+    <h1>コード</h1>
     <p><small>(雰囲気のみ)</small></p>
 </section>
 
 <section data-state="">
     <h2>Selection</h2>
     <p style="white-space: nowrap;">css 互換セレクターで DOM を選択</p>
-    <pre><code class="javascript">d3.select('body').selectAll('div');</code></pre>
+    <pre><code class="coffeescript">d3.select('body').selectAll('div')</code></pre>
     <p class="fragment">上の式の返り値が Selection オブジェクト</p>
 </section>
 
 <section data-state="">
     <h2>Data Binding</h2>
     <p>Selection に対して data を bind する。</p>
-    <pre style=""><code class="javascript" style="font-size: ;">
-var data = [4, 3, 5, 6, 10, 14];
+    <pre style=""><code class="coffeescript" style="font-size: ;">
+array = [4, 3, 5, 6, 10, 14]
 
 d3.select('body').selectAll('div')
-    <span class="hl">.data(data);</span> // selection に data を bind
+    <span class="fragment"><span class="hl">.data(array)</span> // selection に data を bind</span>
 </code></pre>
 </section>
 
@@ -232,12 +245,12 @@ d3.select('body').selectAll('div')
     <h2>Data-Driven Update</h2>
     <p>data を使って Selection (DOM) を update する</p>
     <pre><code class="coffeescript">
-data = [4, 3, 5, 6, 10, 14]
+array = [4, 3, 5, 6, 10, 14]
 
 d3.select('body').selectAll('div')
-    .data(data)
-    <span class="hl fragment">.style('height', 20)</span>
+    .data(array)
     <span class="hl fragment">.style('width', (d) -> d * 10)</span>
+    <span class="hl fragment">.style('height', 20)</span>
     <span class="hl fragment">.attr('class', 'bar')</span>
 </code></pre>
     <p class="fragment"><span class="hl">.style</span> メソッドは <span class="hl">css 属性</span><br /><span class="hl">.attr</span> メソッドは<span class="hl">タグの属性</span>を更新する。</p>
@@ -251,7 +264,7 @@ d3.select('body').selectAll('div')
 <section data-state="">
     <h2>Enter と Exit</h2>
     <p class=""><img src="img/join.png" width="500"/></p>
-    <p class="fragment" style="white-space: nowrap;">Selection の <span class="hl">dom の数</span>と <span class="hl">data の数</span>が合わない場合どうなる？</p>
+    <p class="fragment" style="white-space: nowrap;">Selection の <span class="hl">dom の数</span>と <span class="hl">data の数</span>が合わない場合</p>
     <p class="fragment">data が余ってる分 = <span class="hl">enter</span></p>
     <p class="fragment">dom が余ってる分 = <span class="hl">exit</span></p>
 </section>
@@ -267,18 +280,24 @@ d3.select('body').selectAll('div').data([1..10])
     # data にあわない分は .remove する。
 </code></pre>
     <p class="fragment">dom と data の差分への操作がメソッドチェインだけで書ける。</p>
-    <p class="fragment">存在しない DOM をわざと <span class="hl code">.selectAll</span> して、<span class="hl code">.enter()</span> に <span class="hl code">.append('elm')</span> で、<span class="hl">0 から dom を生成する</span>使い方もある。</p>
+    <!--p class="fragment">存在しない DOM をわざと <span class="hl code">.selectAll</span> して、<span class="hl code">.enter()</span> に <span class="hl code">.append('elm')</span> で、<span class="hl">0 から dom を生成する</span>使い方もある。</p-->
 </section>
 
 <section>
     <h2>Transitions</h2>
     <p>アニメーションの記述</p>
+    <pre><code class="coffeescript">selection
+    .style('width', 100)
+    .transition()
+    .style('width', (d) -> d * 10)
+</code></pre>
     <p class="fragment"><span class="code">.transition()</span>にチェインさせた内容がアニメーションする。</p>
 </section>
 
 <section>
-    (ほぼ)ここまでの知識だけで作ってみたデモ
+    ここまでの知識で作ってみたデモ
     <p><iframe src="examples/1.html" style="width: 100%; zoom: 1 !important; width: 800px; height: 500px;"></iframe></p>
+    <aside></aside>
 </section>
 
 <section>
@@ -292,74 +311,82 @@ d3.select('body').selectAll('div').data([1..10])
     </ul>
 </section>
 
-<section>
+<section data-state="cluster">
     <h1>Layouts</h1>
     <p>&nbsp;<br /><small><code>d3.layout</code></small></p>
     <ul>
-        <li class="fragment">core だけだと実現の難しいレイアウトをつくれるモジュール</li>
+        <li class="fragment">core だけだと実現の難しいレイアウトをつくるためのモジュール</li>
     </ul>
 </section>
 
-<section>
-    <h2>Cluster layout</h2>
+<section data-state="cluster trans75">
+    <h2><a href="http://bl.ocks.org/mbostock/4063570">Cluster layout</a></h2>
 </section>
 
-<section>
+<section data-state="cluster">
     <h2>Pack layout</h2>
+    <a href="http://bl.ocks.org/mbostock/4063530"><img src="img/pack.png" /></a>
 </section>
 
 <section>
     <h2>Partition layout</h2>
+    <a href="http://bl.ocks.org/mbostock/4063423"><img src="img/partition.png" /></a>
 </section>
 
 <section>
     <h2>Treemap layout</h2>
+    <a href="http://bl.ocks.org/mbostock/4063582"><img src="img/treemap.png" /></a>
 </section>
 
-<section>
+<section data-state="chord">
     <h2>Bundle layout</h2>
+    <a href="http://mbostock.github.com/d3/talk/20111116/bundle.html"><img src="img/bundle.png" /></a>
 </section>
 
-<section>
+<section data-state="chord trans75">
     <h2>Chord layout</h2>
 </section>
 
-<section>
+<!--section data-state="chord">
     <h2>Force layout</h2>
-</section>
+</section-->
 
-<section>
-    <h2>Stack layout</h2>
-</section>
-
-<section data-state="">
+<section data-state="chord">
     <h1>Geo</h1>
     <p><small><code>d3.geo</code></small></p>
-    <p class="fragment">地図データを表示出来る。</p>
+    <p class="fragment">地図データを表示するためのモジュール</p>
     <p class="fragment">TopoJSON という独自形式を使う。</p>
 </section>
 
-<section data-state="used3">
+<section data-state="chord">
+    <a href="http://www.nytimes.com/interactive/2012/11/07/us/politics/obamas-diverse-base-of-support.html"><img src="img/map2.png" /></a>
+</section>
+
+
+
+
+<section data-state="">
     <h1>Geo</h1>
     <p><small>(私見)</small></p>
     <p class="fragment">地図データ自体が結構ややこしい。</p>
-    <p class="fragment">地雷感</p>
+    <p class="fragment">お手軽感は無い印象</p>
 </section>
 
-<section data-state="used3">
+<section data-state="">
     <h2>まとめ</h2>
 </section>
 
-<section data-state="used3 trans100">
-    <section></section>
-    <section data-state="trans50">
-        <p>
-            <a href="http://www.dashingd3js.com/" target="_blank">http://www.dashingd3js.com/</a>
-        </p>
-    </section>
+<section data-state="bigwave">
+    <h2 class="fragment">デモがすごい！</h2>
+    <h2 class="fragment">人気がすごい！</h2>
+    <h2 class="fragment">文法がイケテル！</h2>
 </section>
 
-<section data-state="used3">
+<section data-state="bigwave trans100">
+    <section></section>
+</section>
+
+<section data-state="bigwave">
     <h1>Resources</h1>
     <ul>
         <li>
@@ -411,6 +438,7 @@ d3.select('body').selectAll('div').data([1..10])
 </div>
 <script type="text/javascript" src="js/coffee-script.js"></script>
 <script type="text/javascript" src="js/highlight.js"></script>
+<script type="text/javascript" src="js/notes.js"></script>
 <script type="text/javascript" src="js/reveal.min.js"></script>
 <script type="text/coffeescript">
 hljs.initHighlightingOnLoad()
